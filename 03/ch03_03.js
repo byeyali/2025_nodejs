@@ -41,3 +41,21 @@ const christmas = moment("2025-12-25");
 const today = moment();
 const dayAfter2 = christmas.diff(today, "days");
 console.log(dayAfter2);
+
+require("moment/locale/ko"); // 한국어 불러오기
+moment.locale("ko"); // 한국어 설정
+const s3 = moment();
+console.log(`요일: ${s3.format("d")}`);
+console.log(`요일: ${s3.format("dd")}`);
+console.log(`요일: ${s3.format("ddd")}`);
+console.log(`요일: ${s3.format("dddd")}`);
+
+// 문제5
+// 올해 크리스마스 무슨요일
+const christmas2 = moment("2025-12-25");
+console.log(`올해 클스마스는 ${christmas2.format("dddd")} 요일`);
+
+// 문제6
+// 생일은 무슨요일
+const birthday = moment("1973-04-25");
+console.log(`난 :${birthday.format("dddd")} 요일에 태어났어.`);
