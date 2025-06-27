@@ -53,7 +53,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Note"
 
-  /notes/tag/{tag}:
+  /notes/{tag}:
     get:
       summary: 태그별 노트 조회
       parameters:
