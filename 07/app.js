@@ -7,6 +7,8 @@ const todoRouter = require("./routes/todos");
 const postRouter = require("./routes/posts");
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
 
 const app = express();
 
@@ -17,6 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const uploadDir = `public/uploads`;
 app.use(`downloads`, express.static(path.join(__dirname, uploadDir)));
+// 스웨거 설정
+// swagger.yaml 파일에서 문서 로딩
+const swaggerDocument = YAML.load(path.join(__dirname, "swagger.yaml"));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/notes", noteRouter);
 app.use("/todos", todoRouter);
 app.use("/posts", postRouter);

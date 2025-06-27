@@ -6,17 +6,6 @@ const createPost = async (req, res) => {
   let filename = req.file ? req.file.filename : null; // filename aa-123444.png
   filename = `/downloads/${filename}`;
 
-  // let user = await models.User.findOne({
-  //   where: { email: "a@example.com" },
-  // });
-  // if (!user) {
-  //   user = await models.User.create({
-  //     name: "이지훈",
-  //     email: "a@example.com",
-  //     password: "12345678",
-  //   });
-  // }
-
   let attachments = [];
   if (req.file) {
     // single file
