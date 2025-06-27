@@ -1,13 +1,17 @@
 const express = require("express");
 const path = require("path");
 const models = require("./models");
+const { logger, logging } = require("./middlewares/logger");
 const noteRouter = require("./routes/notes");
 const todoRouter = require("./routes/todos");
 const postRouter = require("./routes/posts");
+const userRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
 
 const app = express();
 
 // 미들웨어 설정
+app.use(logging);
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +20,8 @@ app.use(`downloads`, express.static(path.join(__dirname, uploadDir)));
 app.use("/notes", noteRouter);
 app.use("/todos", todoRouter);
 app.use("/posts", postRouter);
+app.use("/users", userRouter);
+app.use("/auth", authRouter);
 
 // 모든 라우터 최하단에
 app.use((req, res) => {
